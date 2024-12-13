@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class category_blog(models.Model):
+class Category_blog(models.Model):
     title = models.CharField(max_length=250)
     status = models.BooleanField(default=True)
 
