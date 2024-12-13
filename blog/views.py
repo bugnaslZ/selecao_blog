@@ -9,9 +9,6 @@ def blog(request):
     }
     return render(request,'blog/blog.html' , context=context)
 
-def blog_detail(request ,id):
-    blog_details = get_object_or_404(Blog , id=id)
-    context = {
-        "blog_details" : blog_details
-    }
-    return render(request,'blog/blog-details.html' , context= context)
+def blog_detail(request ):
+   
+    return render(request,'blog/blog-details.html' )
