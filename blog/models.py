@@ -13,7 +13,7 @@ class Category_blog(models.Model):
 class Blog(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
     image = models.ImageField(upload_to="blog" , default="default.jpg")
-    category = models.ManyToManyField(category_blog)
+    category = models.ManyToManyField(Category_blog)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=True)
 
