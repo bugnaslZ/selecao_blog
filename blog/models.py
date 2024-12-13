@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class category_blog(models.Model):
     title = models.CharField(max_length=250)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -14,6 +15,7 @@ class Blog(models.Model):
     image = models.ImageField(upload_to="blog" , default="default.jpg")
     category = models.ManyToManyField(category_blog)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user
