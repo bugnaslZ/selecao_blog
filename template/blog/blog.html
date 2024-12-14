@@ -29,7 +29,7 @@
 
           <div class="col-lg-4">
             <article>
-              {% for blog in blogs %}
+
               <div class="post-img">
                 <img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
               </div>
@@ -43,19 +43,17 @@
               <div class="d-flex align-items-center">
                 <img src= "{% static  'assets/img/blog/blog-author.jpg' %}"  alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
+
                   <p class="post-author">{{blog.user}}</p>
                   <p class="post-date">
                     <time datetime="2022-01-01">Jan 1, 2022</time>
                   </p>
                 </div>
               </div>
-              {% endfor %}
 
             </article>
           </div><!-- End post list item -->
 
-        </div>
-      </div>
 
     </section><!-- /Blog Posts Section -->
 
@@ -93,5 +91,7 @@
           </ul>
         </div>
       </div>
+
   </main>
   {% endblock 'content' %}
+
