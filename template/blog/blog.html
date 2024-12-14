@@ -194,14 +194,27 @@
       <div class="container">
         <div class="d-flex justify-content-center">
           <ul>
-            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#" class="active">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>...</li>
-            <li><a href="#">10</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+            {% comment %}<li><a href="#"><i class="bi bi-chevron-left"></i></a></li>{% endcomment %}
+             {% if blogs.has_next and blogs.has_previous %} 
+            
+
+
+              <a href={% url 'blog:blog' %}?page={{first}}><button>first page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><button>prev pag</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><button>next page</button>
+              <a href={% url 'blog:blog' %}?page={{last}}><button>last page</button>
+
+            
+            {% elif blogs.has_next %}
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><button>next page</button>
+              <a href={% url 'blog:blog' %}?page={{last}}><button>last page</button>
+            {% elif blogs.has_previous %}
+              <a href={% url 'blog:blog' %}?page={{first}}><button>first page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><button>prev page</button>
+            {% endif %} 
+            
+
+             {% comment %}<li><a href="#"><i class="bi bi-chevron-right"></i></a></li> {% endcomment %}
           </ul>
         </div>
       </div>
