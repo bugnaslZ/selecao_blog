@@ -23,8 +23,10 @@
 
     <!-- Blog Posts Section -->
     <section id="blog-posts" class="blog-posts section">
-
+      
+      
       <div class="container">
+        {% for blog in blogs %}
         <div class="row gy-4">
 
           <div class="col-lg-4">
@@ -37,13 +39,13 @@
               <p class="post-category">Politics</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
+                <a href="#">Dolorum optio tempore voluptas dignissimos</a>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/blog/blog-author.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src= "{% static  'assets/img/blog/blog-author.jpg' %}"  alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author">Maria Doe</p>
+                  <p class="post-author">{{blog.user}}</p>
                   <p class="post-date">
                     <time datetime="2022-01-01">Jan 1, 2022</time>
                   </p>
@@ -51,6 +53,7 @@
               </div>
 
             </article>
+<<<<<<< HEAD
           </div><!-- End post list item -->
           
 
@@ -58,6 +61,15 @@
       </div>
 
     </section><!-- /Blog Posts Section -->
+=======
+          </div>
+          {% endfor %}
+          <!-- End post list item -->
+
+
+    </section>
+    <!-- /Blog Posts Section -->
+>>>>>>> main
 
     <!-- Blog Pagination Section -->
     <section id="blog-pagination" class="blog-pagination section">
@@ -65,19 +77,32 @@
       <div class="container">
         <div class="d-flex justify-content-center">
           <ul>
-            <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#" class="active">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>...</li>
-            <li><a href="#">10</a></li>
-            <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+            {% if blogs.has_next and blogs.has_previous %} 
+            
+
+              <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><i class="bi bi-chevron-left"></i></a>
+              <a href={% url 'blog:blog' %}?page={{first}}><button>first page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><button>prev pag</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><button>next page</button>
+              <a href={% url 'blog:blog' %}?page={{last}}><button>last page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><i class="bi bi-chevron-right"></i></a>
+
+            
+            {% elif blogs.has_next %}
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><button>next page</button>
+              <a href={% url 'blog:blog' %}?page={{last}}><button>last page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.next_page_number}}><i class="bi bi-chevron-right"></i></a>
+
+
+            {% elif blogs.has_previous %}
+             <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><i class="bi bi-chevron-left"></i></a>
+              <a href={% url 'blog:blog' %}?page={{first}}><button>first page</button>
+              <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><button>prev page</button>
+            {% endif %} 
+            
           </ul>
         </div>
       </div>
-
     </section><!-- /Blog Pagination Section -->
-
   </main>
   {% endblock 'content' %}
