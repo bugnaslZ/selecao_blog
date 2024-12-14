@@ -17,7 +17,7 @@ class Service(models.Model):
     content = models.TextField()
     services = models.ManyToManyField(Specials)
     desc = models.TextField()
-    image = models.ImageField(default='default.jpg', upload_to='root' )
+    image = models.ImageField(default='default.jpg', upload_to='services' )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     catalog_file  = models.TextField()
@@ -42,23 +42,12 @@ class Ability(models.Model):
 
 class Agent(models.Model):
     user = models.ForeignKey(Users,on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='root')
+    image = models.ImageField(default='default.jpg', upload_to='agents')
     ability = models.ForeignKey(Ability, on_delete=models.CASCADE)
-    x = models.TextField(blank=True, max_length=250)
-    instagram = models.TextField(blank=True, max_length=250)
-    linkedin = models.TextField(blank=True, max_length=250)
-    twitter = models.TextField(blank=True, max_length=250)
-    status = models.BooleanField(default=True)
-
-
-
-
-
-class About(models.Model):
-    title = models.CharField(max_length=250)
-    content = models.CharField(max_length=250)
-    desc = models.CharField(max_length=250)
-    service = models.ManyToManyField(Specials)
+    instagram = models.CharField(max_length=200)
+    linkedin = models.CharField(max_length=200)
+    twitter = models.CharField(max_length=200)
+    status = models.BooleanField(default=False)
 
 class Ferquintly(models.Model):
     question = models.TextField()
@@ -68,18 +57,16 @@ class Category_portofilio(models.Model):
     title = models.TextField()
 
 
-
-
 class Portfolio(models.Model):
     user = models.ForeignKey(Users,on_delete=models.CASCADE)
     name = models.CharField( max_length=250)
     title = models.CharField(max_length=250)
-    image = models.ImageField(default='default.jpg', upload_to='root')
+    image = models.ImageField(default='default.jpg', upload_to='portfolios')
     content = models.CharField(max_length=250)
     desc = models.CharField(max_length=250)
     ability = models.ForeignKey(Ability,on_delete=models.CASCADE)
     about_user = models.TextField()
-    logo = models.ImageField(default='default.jpg', upload_to='root')
+    logo = models.ImageField(default='default.jpg', upload_to='portfolios')
     categoty = models.ManyToManyField(Category_portofilio)
     updated_at = models.DateField(auto_now=True)
 
@@ -97,7 +84,7 @@ class Tester(models.Model):
     logo = models.ImageField(default='default.jpg', upload_to='root')
     domain = models.CharField(max_length=250)
     stars = models.ManyToManyField(Stars)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
 
 
     

@@ -1,5 +1,5 @@
 from django.db import models
-
+from root.models import Users , Agent
 
 # Create your models here.
 
@@ -17,7 +17,7 @@ class Tags(models.Model):
         return self.title
 
 class Blog(models.Model):
-    user = models.CharField(max_length=200)#به دلیل تکمیل نشدن مدل روت فارنکی نمیشه تا روت تکمیل بشه
+    agent = models.ForeignKey(Agent,on_delete=models.CASCADE)
     image = models.ImageField(upload_to="blog" , default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=True)
@@ -30,7 +30,7 @@ class Detail_blog(models.Model):
     title = models.CharField(max_length=220)
     image = models.ImageField(default='default.jpg')
     image2 = models.ImageField(default='default.jpg')
-    user = models.CharField(max_length=200)#به دلیل تکمیل نشدن مدل روت فارنکی نمیشه تا روت تکمیل بشه
+    
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     content2 = models.TextField()
