@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "context_processor.general_context",
             ],
         },
     },
@@ -124,8 +125,8 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR/'/media'
 
 STATICFILES_DIRS = [
-    BASE_DIR/'static',
-    BASE_DIR/'media',
+    BASE_DIR/'static/',
+    BASE_DIR/'media/',
 ]
 
 # Default primary key field type
