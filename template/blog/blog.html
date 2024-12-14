@@ -43,7 +43,7 @@
               <div class="d-flex align-items-center">
                 <img src= "{% static  'assets/img/blog/blog-author.jpg' %}"  alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author">{{blog.user.username}}</p>
+                  <p class="post-author">{{blog.user}}</p>
                   <p class="post-date">
                     <time datetime="2022-01-01">Jan 1, 2022</time>
                   </p>
@@ -94,8 +94,5 @@
           </ul>
         </div>
       </div>
-
-    </section><!-- /Blog Pagination Section -->
-
   </main>
   {% endblock 'content' %}
