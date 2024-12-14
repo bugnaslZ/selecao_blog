@@ -5,7 +5,7 @@ from django.db import models
 
 class Specials(models.Model):
     services = models.CharField(max_length=120)
-    status = models.BinaryField(default=True)
+    status = models.BooleanField(default=False)
     
 
 class Price(models.Model):
@@ -22,7 +22,7 @@ class Service(models.Model):
     updated_at = models.DateField(auto_now=True)
     catalog_file  = models.TextField()
     ctatlog_doc = models.TextField()
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
 
 
 class Users(models.Model):
@@ -54,12 +54,12 @@ class Ferquintly(models.Model):
     answer = models.TextField()
 
 class Category_portofilio(models.Model):
-    title = models.TextField()
+    title = models.CharField(max_length=100)
 
 
 class Portfolio(models.Model):
-    user = models.ForeignKey(Users,on_delete=models.CASCADE)
-    name = models.CharField( max_length=250)
+    agent = models.ForeignKey(Agent,on_delete=models.CASCADE)
+    name = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     image = models.ImageField(default='default.jpg', upload_to='portfolios')
     content = models.CharField(max_length=250)
@@ -80,7 +80,7 @@ class Stars(models.Model):
 
 class Tester(models.Model):
     title = models.CharField(max_length=250)
-    context = models.CharField(max_length=250)
+    context = models.TextField()
     logo = models.ImageField(default='default.jpg', upload_to='root')
     domain = models.CharField(max_length=250)
     stars = models.ManyToManyField(Stars)
