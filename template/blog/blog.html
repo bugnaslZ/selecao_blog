@@ -23,8 +23,10 @@
 
     <!-- Blog Posts Section -->
     <section id="blog-posts" class="blog-posts section">
-
+      
+      
       <div class="container">
+        {% for blog in blogs %}
         <div class="row gy-4">
 
           <div class="col-lg-4">
@@ -43,8 +45,7 @@
               <div class="d-flex align-items-center">
                 <img src= "{% static  'assets/img/blog/blog-author.jpg' %}"  alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-
-                  <p class="post-author">{{blog.user}}</p>
+                  <p class="post-author">ali</p>
                   <p class="post-date">
                     <time datetime="2022-01-01">Jan 1, 2022</time>
                   </p>
@@ -52,10 +53,13 @@
               </div>
 
             </article>
-          </div><!-- End post list item -->
+          </div>
+          {% endfor %}
+          <!-- End post list item -->
 
 
-    </section><!-- /Blog Posts Section -->
+    </section>
+    <!-- /Blog Posts Section -->
 
     <!-- Blog Pagination Section -->
     <section id="blog-pagination" class="blog-pagination section">

@@ -5,7 +5,7 @@ from .models import Blog
 
 def blog(request, category=None):
     if category is not None:
-        blog = Blog.objects.filter(category__title=category)
+        blog = Blog.objects.filter(category__title=category, status=True)
         
     else:
         blog = Blog.objects.all()
