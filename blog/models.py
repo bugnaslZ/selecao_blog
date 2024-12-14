@@ -26,6 +26,7 @@ class Blog(models.Model):
 
 
     
+
 class Detail_blog(models.Model):
     title = models.CharField(max_length=220)
     image = models.ImageField(default='default.jpg')
@@ -51,3 +52,4 @@ class Detail_blog(models.Model):
         return self.title
 
 #____________--___________--
+
