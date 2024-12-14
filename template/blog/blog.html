@@ -84,7 +84,7 @@
 
 
             {% elif blogs.has_previous %}
-             <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><i class="bi bi-chevron-right"></i></a>
+             <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><i class="bi bi-chevron-left"></i></a>
               <a href={% url 'blog:blog' %}?page={{first}}><button>first page</button>
               <a href={% url 'blog:blog' %}?page={{blogs.previous_page_number}}><button>prev page</button>
             {% endif %} 
