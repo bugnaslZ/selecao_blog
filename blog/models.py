@@ -23,8 +23,9 @@ class Blog(models.Model):
     status = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
     
+<<<<<<< HEAD
 class Detail_blog(models.Model):
     title = models.CharField(max_length=220)
     image = models.ImageField(default='default.jpg')
@@ -50,3 +51,5 @@ class Detail_blog(models.Model):
         return self.title
 
 #____________--___________--
+=======
+>>>>>>> 8100d4da52c9c00c31217b694b08f07ed83d042b
