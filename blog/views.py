@@ -1,5 +1,5 @@
 from django.shortcuts import render ,get_object_or_404
-from .models import Blog
+from .models import Blog,category_blog
 from django.core.paginator import Paginator
 
 
@@ -21,11 +21,14 @@ def blog(request, category=None):
     except:
         page_number = first_page
         blog = blog_paginate.get_page(first_page)
+
+    category = category_blog.objects.all()
     
     context = {
         "blogs":blog,
         "first" : first_page,
-        "last" : last_page
+        "last" : last_page, 
+        'categoris': category
     }
 
 
