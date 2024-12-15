@@ -5,24 +5,38 @@ from django.db import models
 
 class Specials(models.Model):
     services = models.CharField(max_length=120)
-    status = models.BinaryField(default=True)
+   
+    
+    def __str__(self):
+        return self.services
+
     
 
 class Price(models.Model):
     name = models.CharField(max_length=120)
     service = models.ManyToManyField(Specials)
 
+    def __str__(self):
+        return self.name
+
 class Service(models.Model):
     title = models.CharField(max_length=250)
     content = models.TextField()
     services = models.ManyToManyField(Specials)
     desc = models.TextField()
-    image = models.ImageField(default='default.jpg', upload_to='root' )
+   
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     catalog_file  = models.TextField()
     ctatlog_doc = models.TextField()
     status = models.BooleanField(default=True)
+
+    
+    def __str__(self):
+        return self.title
+    
+    def truncate_char(self):
+        return self.content[:10]
 
 
 class Users(models.Model):
@@ -32,12 +46,19 @@ class Users(models.Model):
     lastname = models.CharField(max_length=250)
     email = models.EmailField(max_length=250)
 
+    
+    def __str__(self):
+        return self.username
+
 
 
 
 class Ability(models.Model):
     name = models.CharField(max_length=250)
 
+    
+    def __str__(self):
+        return self.name
 
 
 class Agent(models.Model):
@@ -50,6 +71,8 @@ class Agent(models.Model):
     twitter = models.TextField(blank=True, max_length=250)
     status = models.BooleanField(default=True)
 
+    
+  
 
 
 
@@ -57,15 +80,25 @@ class Agent(models.Model):
 class About(models.Model):
     title = models.CharField(max_length=250)
     content = models.CharField(max_length=250)
-    desc = models.CharField(max_length=250)
-    service = models.ManyToManyField(Specials)
+   
+    
+    def __str__(self):
+        return self.title
 
 class Ferquintly(models.Model):
     question = models.TextField()
     answer = models.TextField()
 
+    
+    def __str__(self):
+        return self.question
+
 class Category_portofilio(models.Model):
     title = models.TextField()
+
+    
+    def __str__(self):
+        return self.title
 
 
 
@@ -77,28 +110,40 @@ class Portfolio(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='root')
     content = models.CharField(max_length=250)
     desc = models.CharField(max_length=250)
-    ability = models.ForeignKey(Ability,on_delete=models.CASCADE)
-    about_user = models.TextField()
+   
+   
     logo = models.ImageField(default='default.jpg', upload_to='root')
-    categoty = models.ManyToManyField(Category_portofilio)
+   
     updated_at = models.DateField(auto_now=True)
+
+    
+    def __str__(self):
+        return self.name
 
 
 class Stars(models.Model):
     count = models.IntegerField(default=5)
 
 
+    def __str__(self):
+        return str(self.count)
+
 
 
 
 class Tester(models.Model):
-    title = models.CharField(max_length=250)
-    context = models.CharField(max_length=250)
+    title = models.CharField(max_length=220)
+    context = models.CharField(max_length=220)
     logo = models.ImageField(default='default.jpg', upload_to='root')
-    domain = models.CharField(max_length=250)
-    stars = models.ManyToManyField(Stars)
+    domain = models.CharField(max_length=220)
+    stars = models.ForeignKey(Stars,on_delete=models.DO_NOTHING)
     status = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.title
+
+    def count_star(self):
+        return range(self.stars.count)
 
 class Contactus(models.Model):
    name = models.CharField(max_length=50)
