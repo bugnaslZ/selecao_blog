@@ -16,13 +16,6 @@ def blog(request, category=None):
             'blogs':blog
         }
         
-    elif request.Get.get('search') is not None:
-         search=request.Get.get('search')
-    service=Detail_blog.objects.filter(content__contains=search)
-    context={
-            'blogs':blog
-        }
-
     blog_paginate = Paginator(blog, 2)
     first_page = 1
     last_page = blog_paginate.num_pages
@@ -44,4 +37,10 @@ def blog(request, category=None):
     return render(request, 'blog/blog.html', context=context)    
 
 def blog_detail(request ):
+    if request.Get.get('search') is not None:
+        search=request.Get.get('search')
+        service=Detail_blog.objects.filter(content__contains=search)
+        context={
+            'blogs':blog
+        }
     return render(request,'blog/blog-details.html' )
