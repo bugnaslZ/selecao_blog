@@ -76,20 +76,20 @@
       </div><!-- End Section Title -->
 
       <div class="container">
-
+      {% for about in abouts %}
         <div class="row gy-4">
-          {% for abouts in about %}
+         
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
-              {{abouts.title}}
+              {{about.title}}
             </p>
             <ul>
-              <li><i class="bi bi-check2-circle"></i> <span>{{abouts.Service.services}}</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span></span></li>
             </ul>
           </div>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            <p>{{about.content}}</p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
@@ -108,7 +108,7 @@
           <li class="nav-item col-3">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
               <i class="bi bi-binoculars"></i>
-              <h4 class="d-none d-lg-block">{{abouts.title}}</h4>
+              <h4 class="d-none d-lg-block"></h4>
             </a>
           </li>
         </ul><!-- End Tab Nav -->
@@ -117,20 +117,20 @@
           <div class="tab-pane fade active show" id="features-tab-1">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>{{abouts.title}}</h3>
+                <h3></h3>
                 <p class="fst-italic">
-                {{abouts.content}}
+                
                 </p>
                 <ul>
                   <li><i class="bi bi-check2-all"></i>
-                    <spab>{{abouts.Service.services}}</spab>
+                    <spab></spab>
                   </li>
                 <p>
-                  {{abouts.desc}}
+                
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="{% static 'assets/img/working-1.jpg' %}" alt="" class="img-fluid">
+                <img src="{% static '' %}" alt="" class="img-fluid">
               </div>
             </div>
           </div><!-- End Tab Content Item -->
@@ -173,16 +173,16 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for services in Service %}
+          {% for service in services %}
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item  position-relative">
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>{{services.title}}</h3>
+                <h3>{{service.title}}</h3>
               </a>
-              <p>{{services.truncate_char}}.</p>
+              <p>{{service.content}}.</p>
             </div>
           </div><!-- End Service Item -->
           {% endfor %}
@@ -214,10 +214,10 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <img src="{% static 'assets/img/masonry-portfolio/masonry-portfolio-1.jpg' %}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>{{port.name}}</h4>
+                <h4></h4>
                 <p>{{port.title}}</p>
                 <a href={{port.image}} title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <a href='' title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
             {% endfor %}
@@ -269,7 +269,7 @@
             }
           </script>
           <div class="swiper-wrapper">
-            {% for test in tester %}
+           
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src={{test.logo}} class="testimonial-img" alt="">
@@ -287,7 +287,7 @@
                 </p>
               </div>
             </div><!-- End testimonial item -->
-            {% endfor %}
+         
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -374,21 +374,21 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for agents in agent %}
+          {% for agent in agents %}
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="team-member">
               <div class="member-img">
-                <img src={{agents.image}} class="img-fluid" alt="">
+                <img src={{agent.image.url}} class="img-fluid" alt="">
                 <div class="social">
-                  <a href={{agents.twiter}}><i class="bi bi-twitter-x"></i></a>
-                  <a href={{agents.facebook}}><i class="bi bi-facebook"></i></a>
-                  <a href={{agents.instagram}}><i class="bi bi-instagram"></i></a>
-                  <a href={{agents.linkedin}}><i class="bi bi-linkedin"></i></a>
+                  <a href={{agent.twiter}}><i class="bi bi-twitter-x"></i></a>
+                  <a href={{agent.facebook}}><i class="bi bi-facebook"></i></a>
+                  <a href={{agent.instagram}}><i class="bi bi-instagram"></i></a>
+                  <a href={{agent.linkedin}}><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
               <div class="member-info">
-                <h4>{{agents.user.username}}</h4>
-                <span>{{agents.ability.name}}</span>
+                <h4>{{agent.user.username}}</h4>
+                <span>{{agent.ability.name}}</span>
               </div>
             </div>
           </div><!-- End Team Member -->
@@ -412,7 +412,7 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for blogs in detail_blog %}
+          {% for blog in blogs %}
           <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <article>
 
@@ -420,18 +420,18 @@
                 <img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
               </div>
 
-              <p class="post-category">{{blogs.categories.title}}</p>
+              <p class="post-category">{{blog.categories.all}}</p>
 
               <h2 class="title">
-                <a href="blog-details.html">{{blogs.title}}</a>
+                <a href="blog-details.html">{{blog.title}}</a>
               </h2>
 
               <div class="d-flex align-items-center">
                 <img src="{% static 'assets/img/blog/blog-author.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author">{{blogs.user.username}}</p>
+                  <p class="post-author">{{blog.user.username}}</p>
                   <p class="post-date">
-                    <time datetime="2022-01-01">{{blogs.created_at}}</time>
+                    <time datetime="2022-01-01">{{blog.created_at}}</time>
                   </p>
                 </div>
               </div>
