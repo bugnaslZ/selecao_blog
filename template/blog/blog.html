@@ -33,13 +33,13 @@
             <article>
 
               <div class="post-img">
-                <img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
+                <img src={{blog.image.url}} alt="" class="img-fluid">
               </div>
-
-              <p class="post-category">Politics</p>
-
+               {% for cat in blog.categories.all  %}
+                <p class="post-category">{{cat.title}}</p>
+              {% endfor %}
               <h2 class="title">
-                <a href={% url 'blog:blog_detail' id=blog.id %}>Dolorum optio tempore voluptas dignissimos</a>
+                <a href={% url 'blog:blog_detail' id=blog.id %}>{{blog.title}}</a>
               </h2>
 
               <div class="d-flex align-items-center">
