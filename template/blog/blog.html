@@ -14,7 +14,7 @@
         <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href={% url 'home:home' %}>Home</a></li>
             <li class="current">Blog</li>
           </ol>
         </nav>
@@ -39,7 +39,7 @@
               <p class="post-category">Politics</p>
 
               <h2 class="title">
-                <a href="#">Dolorum optio tempore voluptas dignissimos</a>
+                <a href={% url 'blog:blog_detail' id=blog.id %}>Dolorum optio tempore voluptas dignissimos</a>
               </h2>
 
               <div class="d-flex align-items-center">
