@@ -6,11 +6,19 @@ from django.db import models
 class Specials(models.Model):
     services = models.CharField(max_length=120)
     status = models.BinaryField(default=True)
+
+    
+    def __str__(self):
+        return self.services
+
     
 
 class Price(models.Model):
     name = models.CharField(max_length=120)
     service = models.ManyToManyField(Specials)
+
+    def __str__(self):
+        return self.name
 
 class Service(models.Model):
     title = models.CharField(max_length=250)
@@ -24,6 +32,10 @@ class Service(models.Model):
     ctatlog_doc = models.TextField()
     status = models.BooleanField(default=True)
 
+    
+    def __str__(self):
+        return self.title
+
 
 class Users(models.Model):
     username = models.CharField(max_length=250)
@@ -32,12 +44,19 @@ class Users(models.Model):
     lastname = models.CharField(max_length=250)
     email = models.EmailField(max_length=250)
 
+    
+    def __str__(self):
+        return self.username
+
 
 
 
 class Ability(models.Model):
     name = models.CharField(max_length=250)
 
+    
+    def __str__(self):
+        return self.name
 
 
 class Agent(models.Model):
@@ -50,6 +69,10 @@ class Agent(models.Model):
     twitter = models.TextField(blank=True, max_length=250)
     status = models.BooleanField(default=True)
 
+    
+    def __str__(self):
+        return self.user
+
 
 
 
@@ -60,12 +83,24 @@ class About(models.Model):
     desc = models.CharField(max_length=250)
     service = models.ManyToManyField(Specials)
 
+    
+    def __str__(self):
+        return self.title
+
 class Ferquintly(models.Model):
     question = models.TextField()
     answer = models.TextField()
 
+    
+    def __str__(self):
+        return self.question
+
 class Category_portofilio(models.Model):
     title = models.TextField()
+
+    
+    def __str__(self):
+        return self.title
 
 
 
@@ -83,10 +118,17 @@ class Portfolio(models.Model):
     categoty = models.ManyToManyField(Category_portofilio)
     updated_at = models.DateField(auto_now=True)
 
+    
+    def __str__(self):
+        return self.name
+
 
 class Stars(models.Model):
     count = models.IntegerField(default=5)
 
+
+    def __str__(self):
+        return str(self.count)
 
 
 
@@ -99,6 +141,11 @@ class Tester(models.Model):
     stars = models.ManyToManyField(Stars)
     status = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.title
+
+    def count_star(self):
+        return range(self.stars.count)
 
     
 
