@@ -9,7 +9,7 @@ def blog(request, category=None):
         blog = Blog.objects.filter(category__title=category, status=True)
         
     else:
-        blog = Blog.objects.all()
+        blog = Blog.objects.filter(status=True)
         
     blog_paginate = Paginator(blog, 2)
     first_page = 1

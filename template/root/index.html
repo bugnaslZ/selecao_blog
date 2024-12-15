@@ -179,7 +179,7 @@
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href={% url 'home:service_detail' id=service.id %} class="stretched-link">
                 <h3>{{service.title}}</h3>
               </a>
               <p>{{service.content}}.</p>

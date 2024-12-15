@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import Service,Portfolio,About,Agent,Tester
 from blog.models import Blog
 # Create your views here.
@@ -21,8 +21,13 @@ def home(request):
     
     return render(request,'root/index.html',context=context)
 
-def service_detail(request):
-    return render(request,'root/service-details.html')
+def service_detail(request,id):
+    id = request.GET.get('id')
+    services = get_object_or_404(Service,id=id)
+    context ={
+        'services':services
+    }
+    return render(request,'root/service-details.html',context=context)
 
 def protfolio_detail(request):
     return render(request,'root/portfolio-details.html')
