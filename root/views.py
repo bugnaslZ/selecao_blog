@@ -26,12 +26,12 @@ def home(request):
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS," Your contact has been sent successfully")
-            return render(request,"root/index.html")
+            return render(request,"root/index.html",context=context)
         else:
             messages.add_message(request, messages.ERROR," Your contact info is not valid")
-            return render(request,"root/index.html")
+            return render(request,"root/index.html",context=context)
     else:
-        return render(request,"root/index.html")
+        return render(request,"root/index.html",context=context)
 
 
 def service_detail(request):
