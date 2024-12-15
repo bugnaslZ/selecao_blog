@@ -94,18 +94,7 @@ class Migration(migrations.Migration):
                 ('service', models.ManyToManyField(to='root.specials')),
             ],
         ),
-        migrations.CreateModel(
-            name='Tester',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=250)),
-                ('context', models.CharField(max_length=250)),
-                ('logo', models.ImageField(default='default.jpg', upload_to='root')),
-                ('domain', models.CharField(max_length=250)),
-                ('status', models.BooleanField(default=True)),
-                ('stars', models.ManyToManyField(to='root.stars')),
-            ],
-        ),
+       
         migrations.CreateModel(
             name='Portfolio',
             fields=[
@@ -135,6 +124,18 @@ class Migration(migrations.Migration):
                 ('status', models.BooleanField(default=True)),
                 ('ability', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='root.ability')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='root.users')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Tester',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('title', models.CharField(max_length=220)),
+                ('context', models.TextField(max_length=220)),
+                ('logo', models.ImageField(default='default.jpg')),
+                ('domain', models.CharField(max_length=220)),
+                ('stars', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='root.stars')),
+                ('status', models.BooleanField(default=True)),
             ],
         ),
     ]
