@@ -50,3 +50,16 @@ class Detail_blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    blog = models.ForeignKey(Detail_blog, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    website = models.CharField(max_length=150)
+    message = models.TextField()
+    created_at=models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.Detail_blog.title
