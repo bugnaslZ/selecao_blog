@@ -5,8 +5,7 @@ from django.db import models
 
 class Specials(models.Model):
     services = models.CharField(max_length=120)
-    status = models.BinaryField(default=True)
-
+   
     
     def __str__(self):
         return self.services
@@ -115,10 +114,10 @@ class Portfolio(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='root')
     content = models.CharField(max_length=250)
     desc = models.CharField(max_length=250)
-    ability = models.ForeignKey(Ability,on_delete=models.CASCADE)
-    about_user = models.TextField()
+   
+   
     logo = models.ImageField(default='default.jpg', upload_to='root')
-    categoty = models.ManyToManyField(Category_portofilio)
+   
     updated_at = models.DateField(auto_now=True)
 
     

@@ -173,16 +173,16 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for services in Service %}
+          {% for service in Services %}
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item  position-relative">
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>{{services.title}}</h3>
+                <h3>{{service.title}}</h3>
               </a>
-              <p>{{services.truncate_char}}.</p>
+              <p>{{service.truncate_char}}.</p>
             </div>
           </div><!-- End Service Item -->
           {% endfor %}
@@ -214,7 +214,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <img src="{% static 'assets/img/masonry-portfolio/masonry-portfolio-1.jpg' %}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>{{port.name}}</h4>
+                <h4></h4>
                 <p>{{port.title}}</p>
                 <a href={{port.image}} title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>

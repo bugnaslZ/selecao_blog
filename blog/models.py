@@ -31,7 +31,7 @@ class Detail_blog(models.Model):
     title = models.CharField(max_length=220)
     image = models.ImageField(default='default.jpg')
     image2 = models.ImageField(default='default.jpg')
-    user = models.models.ForeignKey(Users,on_delete=models.CASCADE)
+    user = models.ForeignKey(Users,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     content2 = models.TextField()
