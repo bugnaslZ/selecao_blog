@@ -31,6 +31,6 @@ def blog(request, category=None):
 
     return render(request, 'blog/blog.html', context=context)    
 
-def blog_detail(request ):
+def blog_detail(request):
    
     return render(request,'blog/blog-details.html' )
