@@ -34,28 +34,28 @@ def blog(request, category=None):
 
 from .forms import CommentForm
 from django.contrib import messages
-def blog_detail(request ):
-    blog = get_object_or_404(Detail_blog, id=id)
-    # form = CommentForm()
-    # comments = Comments.objects.filter(status=True, blog=blog.id)
-    # context = {
-    #             'blog': blog,
-    #             'form' : form,
-    #             'comments': comments
-    #          }
-    # if request.method == 'POST':
-    #     form = CommentForm(request.POST)
-    #     if form.is_valid():
-    #         comment = form.save(commit=False)
-    #         comment.blog = blog
-    #         comment.save()
-    #         messages.add_message(request, messages.SUCCESS, " Your Comment has been sent successfully")
-    #         return render(request,'blog/blog-details.html', context=context )
-    #     else:
-    #         messages.add_message(request, messages.ERROR, " Your Comment has invalid data")
-    #         return render(request,'blog/blog-details.html', context=context )
-    # else:
-    return render(request,'blog/blog-details.html', context=blog )
+def blog_detail(request,id ):
+    blog = get_object_or_404(Detail_blog,id=id)
+    form = CommentForm()
+    comments = Comments.objects.filter(status=True, blog=blog.id)
+    context = {
+                'blog': blog,
+                'form' : form,
+                'comments': comments
+             }
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.blog = blog
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, " Your Comment has been sent successfully")
+            return render(request,'blog/blog-details.html', context=context )
+        else:
+            messages.add_message(request, messages.ERROR, " Your Comment has invalid data")
+            return render(request,'blog/blog-details.html', context=context )
+    else:
+        return render(request,'blog/blog-details.html', context=context )
        
 
 
