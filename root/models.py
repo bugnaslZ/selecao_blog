@@ -145,6 +145,9 @@ class Tester(models.Model):
     def count_star(self):
         return range(self.stars.count)
 
+
+
+    
 class Contactus(models.Model):
    name = models.CharField(max_length=50)
    email = models.EmailField()
@@ -153,11 +156,7 @@ class Contactus(models.Model):
 
 
    def __str__(self):
-      return self.name    
-
-
-    
-
+      return self.name
 
     
 
