@@ -4,7 +4,7 @@
 {% block 'content' %}
   
 
-  {% for services in service %}{% endfor %}
+  
   <main class="main">
 
     <!-- Page Title -->
@@ -40,12 +40,12 @@
                 <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Marketing</span></a>
               </div>
             </div><!-- End Services List -->
-
+            {% for service in services %}
             <div class="service-box">
               <h4>Download Catalog</h4>
               <div class="download-catalog">
-                <a href="#"><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
-                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
+                <a href={{service.catalog_file}}><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
+                <a href={{service.catalog_doc}}><i class="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
               </div>
             </div><!-- End Services List -->
 
@@ -59,16 +59,16 @@
           </div>
 
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            <img src={{services.image}} alt="" class="img-fluid services-img">
-            <h3>{{services.title}}</h3>
+            <img src={{service.image}} alt="" class="img-fluid services-img">
+            <h3>{{service.title}}</h3>
             <p>
-              {{services.content}}
+              {{service.content}}
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> <span>{{services.service.services}}</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>{{service.services.services}}</span></li>
             </ul>
             <p>
-              {{services.desc}}
+              {{service.desc}}
             </p>
           </div>
 
@@ -77,7 +77,7 @@
       </div>
 
     </section><!-- /Service Details Section -->
-
+    {% endfor %}
   </main>
 
  

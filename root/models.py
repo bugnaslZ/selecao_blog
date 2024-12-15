@@ -35,6 +35,9 @@ class Service(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def truncate_char(self):
+        return self.content[:10]
 
 
 class Users(models.Model):

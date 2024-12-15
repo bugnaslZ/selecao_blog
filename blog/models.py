@@ -1,5 +1,5 @@
 from django.db import models
-
+from root.models import Users
 
 
 # Create your models here.
@@ -31,7 +31,7 @@ class Detail_blog(models.Model):
     title = models.CharField(max_length=220)
     image = models.ImageField(default='default.jpg')
     image2 = models.ImageField(default='default.jpg')
-    user = models.CharField(max_length=200)#به دلیل تکمیل نشدن مدل روت فارنکی نمیشه تا روت تکمیل بشه
+    user = models.models.ForeignKey(Users,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     content2 = models.TextField()

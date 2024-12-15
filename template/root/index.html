@@ -78,13 +78,13 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for about in about %}
+          {% for abouts in about %}
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
-              {{about.title}}
+              {{abouts.title}}
             </p>
             <ul>
-              <li><i class="bi bi-check2-circle"></i> <span>{{about.Service.specials}}</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>{{abouts.Service.services}}</span></li>
             </ul>
           </div>
 
@@ -96,7 +96,7 @@
         </div>
 
       </div>
-      {% endfor %}
+      
     </section><!-- /About Section -->
 
     <!-- Features Section -->
@@ -108,44 +108,25 @@
           <li class="nav-item col-3">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
               <i class="bi bi-binoculars"></i>
-              <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-              <i class="bi bi-box-seam"></i>
-              <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-              <i class="bi bi-brightness-high"></i>
-              <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
-              <i class="bi bi-command"></i>
-              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+              <h4 class="d-none d-lg-block">{{abouts.title}}</h4>
             </a>
           </li>
         </ul><!-- End Tab Nav -->
 
         <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-          {% for about in about %}
           <div class="tab-pane fade active show" id="features-tab-1">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                <h3>{{abouts.title}}</h3>
                 <p class="fst-italic">
-                {{about.content}}
+                {{abouts.content}}
                 </p>
                 <ul>
                   <li><i class="bi bi-check2-all"></i>
-                    <spab>{{about.service.specials}}</spab>
+                    <spab>{{abouts.Service.services}}</spab>
                   </li>
                 <p>
-                  {{about.desc}}
+                  {{abouts.desc}}
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -192,16 +173,16 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for service in Services %}
+          {% for services in Service %}
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item  position-relative">
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>{{service.title}}</h3>
+                <h3>{{services.title}}</h3>
               </a>
-              <p>{{service.content}}.</p>
+              <p>{{services.truncate_char}}.</p>
             </div>
           </div><!-- End Service Item -->
           {% endfor %}
@@ -225,7 +206,7 @@
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">{{port.category.category_portfolio}}</li>
+            <li data-filter="*" class="filter-active">{{port.category.title}}</li>
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
@@ -235,7 +216,7 @@
               <div class="portfolio-info">
                 <h4>{{port.name}}</h4>
                 <p>{{port.title}}</p>
-                <a href="{% static 'assets/img/masonry-portfolio/masonry-portfolio-1.jpg' %}" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href={{port.image}} title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
@@ -295,7 +276,7 @@
                 <h3>{{test.title}}</h3>
                 <h4>{{test.domain}}</h4>
                 <div class="stars">
-                  {% for star in tester.count_star %}{% endfor %}
+                  {% for star in tester.count_star %}
                   <i class="bi bi-star-fill"></i></i>
                   {% endfor %}
                 </div>
@@ -330,7 +311,7 @@
           {% for prices in price %}
           <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="pricing-item">
-              <h3>{{}}</h3>
+              <h3>{{prices.name}}</h3>
               <h4><sup>$</sup>0<span> / month</span></h4>
               <ul>
                 <li>{{prices.service.services}}</li>
@@ -355,7 +336,7 @@
         <h2>Frequently Asked Questions</h2>
         <p>Frequently Asked Questions</p>
       </div><!-- End Section Title -->
-      {% for frequent in Frequently %}
+      {% for frequint in frequintly %}
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-12">
@@ -393,7 +374,7 @@
       <div class="container">
 
         <div class="row gy-4">
-          {% for agents in agent %}{% endfor %}
+          {% for agents in agent %}
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="team-member">
               <div class="member-img">
@@ -411,7 +392,7 @@
               </div>
             </div>
           </div><!-- End Team Member -->
-
+          {% endfor %}
 
         </div>
 
@@ -431,7 +412,7 @@
       <div class="container">
 
         <div class="row gy-4">
-
+          {% for blogs in detail_blog %}
           <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <article>
 
@@ -439,77 +420,25 @@
                 <img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
               </div>
 
-              <p class="post-category">Politics</p>
+              <p class="post-category">{{blogs.categories.title}}</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
+                <a href="blog-details.html">{{blogs.title}}</a>
               </h2>
 
               <div class="d-flex align-items-center">
                 <img src="{% static 'assets/img/blog/blog-author.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author">Maria Doe</p>
+                  <p class="post-author">{{blogs.user.username}}</p>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Jan 1, 2022</time>
+                    <time datetime="2022-01-01">{{blogs.created_at}}</time>
                   </p>
                 </div>
               </div>
 
             </article>
           </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <article>
-
-              <div class="post-img">
-                <img src="{% static 'assets/img/blog/blog-2.jpg' %}" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Sports</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/blog/blog-author-2.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Allisa Mayer</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 5, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <article>
-
-              <div class="post-img">
-                <img src="{% static 'assets/img/blog/blog-3.jpg' %}" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Entertainment</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/blog/blog-author-3.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author">Mark Dower</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 22, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
+          {% endfor %}
         </div><!-- End recent posts list -->
 
       </div>
