@@ -24,7 +24,7 @@ class Service(models.Model):
     content = models.TextField()
     services = models.ManyToManyField(Specials)
     desc = models.TextField()
-    image = models.ImageField(default='default.jpg', upload_to='root' )
+   
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     catalog_file  = models.TextField()
@@ -72,9 +72,7 @@ class Agent(models.Model):
     status = models.BooleanField(default=True)
 
     
-    def __str__(self):
-        return self.user
-
+  
 
 
 
@@ -82,9 +80,7 @@ class Agent(models.Model):
 class About(models.Model):
     title = models.CharField(max_length=250)
     content = models.CharField(max_length=250)
-    desc = models.CharField(max_length=250)
-    service = models.ManyToManyField(Specials)
-
+   
     
     def __str__(self):
         return self.title
@@ -136,11 +132,11 @@ class Stars(models.Model):
 
 
 class Tester(models.Model):
-    title = models.CharField(max_length=250)
-    context = models.CharField(max_length=250)
+    title = models.CharField(max_length=220)
+    context = models.CharField(max_length=220)
     logo = models.ImageField(default='default.jpg', upload_to='root')
-    domain = models.CharField(max_length=250)
-    stars = models.ManyToManyField(Stars)
+    domain = models.CharField(max_length=220)
+    stars = models.ForeignKey(Stars,on_delete=models.DO_NOTHING)
     status = models.BooleanField(default=True)
 
     def __str__(self):

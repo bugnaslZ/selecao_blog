@@ -20,7 +20,7 @@ class Tags(models.Model):
     
 class Blog(models.Model):
     user = models.CharField(max_length=200)#به دلیل تکمیل نشدن مدل روت فارنکی نمیشه تا روت تکمیل بشه
-    image = models.ImageField(upload_to="blog" , default="default.jpg")
+    image = models.ImageField( default="default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=True)
 
