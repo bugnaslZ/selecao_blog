@@ -1,12 +1,12 @@
 from django.db import models
 
-# Create your models here.
 
+
+# Create your models here.
 
 class Specials(models.Model):
     services = models.CharField(max_length=120)
-    status = models.BinaryField(default=True)
-    
+    status = models.BooleanField(default=True)
 
 class Price(models.Model):
     name = models.CharField(max_length=120)
@@ -17,42 +17,32 @@ class Service(models.Model):
     content = models.TextField()
     services = models.ManyToManyField(Specials)
     desc = models.TextField()
-    image = models.ImageField(default='default.jpg', upload_to='root' )
+    image = models.ImageField(default='default.jpg', upload_to='root')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    catalog_file  = models.TextField()
-    ctatlog_doc = models.TextField()
+    catalog_file = models.FileField(upload_to='catalogs/', blank=True, null=True)
+    catalog_doc = models.FileField(upload_to='catalogs/', blank=True, null=True)
     status = models.BooleanField(default=True)
-
 
 class Users(models.Model):
     username = models.CharField(max_length=250)
-    pssword = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
     firstname = models.CharField(max_length=250)
     lastname = models.CharField(max_length=250)
     email = models.EmailField(max_length=250)
 
-
-
-
 class Ability(models.Model):
     name = models.CharField(max_length=250)
 
-
-
 class Agent(models.Model):
-    user = models.ForeignKey(Users,on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='root')
     ability = models.ForeignKey(Ability, on_delete=models.CASCADE)
-    x = models.TextField(blank=True, max_length=250)
+    description = models.TextField(blank=True, max_length=250)
     instagram = models.TextField(blank=True, max_length=250)
     linkedin = models.TextField(blank=True, max_length=250)
     twitter = models.TextField(blank=True, max_length=250)
     status = models.BooleanField(default=True)
-
-
-
-
 
 class About(models.Model):
     title = models.CharField(max_length=250)
@@ -67,29 +57,21 @@ class Ferquintly(models.Model):
 class Category_portofilio(models.Model):
     title = models.TextField()
 
-
-
-
 class Portfolio(models.Model):
-    user = models.ForeignKey(Users,on_delete=models.CASCADE)
-    name = models.CharField( max_length=250)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    name = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     image = models.ImageField(default='default.jpg', upload_to='root')
     content = models.CharField(max_length=250)
     desc = models.CharField(max_length=250)
-    ability = models.ForeignKey(Ability,on_delete=models.CASCADE)
+    ability = models.ForeignKey(Ability, on_delete=models.CASCADE)
     about_user = models.TextField()
     logo = models.ImageField(default='default.jpg', upload_to='root')
-    categoty = models.ManyToManyField(Category_portofilio)
+    category = models.ManyToManyField(Category_portofilio)
     updated_at = models.DateField(auto_now=True)
-
 
 class Stars(models.Model):
     count = models.IntegerField(default=5)
-
-
-
-
 
 class Tester(models.Model):
     title = models.CharField(max_length=250)
@@ -98,16 +80,3 @@ class Tester(models.Model):
     domain = models.CharField(max_length=250)
     stars = models.ManyToManyField(Stars)
     status = models.BooleanField(default=True)
-
-
-    
-
-
-    
-
-
-
-
-
-
-
